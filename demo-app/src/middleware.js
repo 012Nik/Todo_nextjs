@@ -10,8 +10,8 @@ export function middleware(request) {
     request.nextUrl.pathname === "/api/login" ||
     request.nextUrl.pathname === "/api/users"
   ) {
-    //return;
-    return NextResponse.redirect(new URL("/profile/user", request.url));
+    return;
+    
   }
 
   const loggedInUserNotAccessPaths =
