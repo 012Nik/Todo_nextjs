@@ -1,11 +1,13 @@
 "use client";
 
 import { login } from "@/services/loginService";
+import { useRouter } from "next/navigation";
+
 import React, { useContext, useState } from "react";
 
 
 const Login = () => {
- 
+ const router = useRouter()
   const [loginData, setLoginData] = useState({
     email: "",
     password: "",
@@ -28,6 +30,7 @@ const Login = () => {
          alert("logged in")
 
       //redirect
+      router.push("/profile/user");
     } catch (error) {
       console.log(error);
       alert("login failed");
