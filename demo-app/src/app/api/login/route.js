@@ -14,7 +14,7 @@ export  async function POST(request){
         //1step 1: validate c.com',
   
         const user = await User.findOne({email:email})
-        console.log(user);
+        console.log("FROMPOST :"+user);
         if(user==null)
            throw new Error("invalid email password")
 
@@ -28,7 +28,7 @@ export  async function POST(request){
             _id:user._id,
             name:user._name
           },process.env.JWT_KEY)
-          console.log(user);
+          
           console.log("token: "+token);
 
           //step4.create nextresponse and send toekn in cookie  
@@ -42,9 +42,6 @@ export  async function POST(request){
             expiresIn: "1d",
             httpOnly: true,
           });
-      
-          console.log(user);
-          console.log(token);
       
           return response;
 
