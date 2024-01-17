@@ -2,6 +2,7 @@ import { NextResponse } from "next/server";
 import jwt from "jsonwebtoken";
 import User from "@/models/users";
 export async function GET(request) {
+  console.log("in current route")
   const authToken = request.cookies.get("authToken")?.value;
   console.log("current toekn :"+authToken);
   const data = jwt.verify(authToken, process.env.JWT_KEY);
