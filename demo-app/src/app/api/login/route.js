@@ -4,9 +4,10 @@ import User from "@/models/users";
 import { connectDb } from "@/helper/db";
 import jwt from "jsonwebtoken";
 
- connectDb();
+
+connectDb();
 export  async function POST(request){
-   
+  connectDb();
     const {email,password} = await request.json();
     
     try {

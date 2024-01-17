@@ -2,12 +2,16 @@
 
 import { login } from "@/services/loginService";
 import { useRouter } from "next/navigation";
+import UserContext from "@/context/userContext";
+import UserProvider from "@/context/contextProvider";
 
 import React, { useContext, useState } from "react";
 
 
 const Login = () => {
  const router = useRouter()
+ 
+  const context = useContext(UserContext);
   const [loginData, setLoginData] = useState({
     email: "",
     password: "",
@@ -26,10 +30,12 @@ const Login = () => {
     //login
 
     try {
-      const result = await login(loginData);
+      const otp = await login(loginData);
          alert("logged in")
 
       //redirect
+  
+     context.setUser(otp.user);
       router.push("/profile/user");
     } catch (error) {
       console.log(error);

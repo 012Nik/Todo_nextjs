@@ -8,3 +8,4 @@ export async function login(data)
 
           return result;
 }
+

@@ -15,7 +15,18 @@ const userSchema = new Schema({
     profileURL: String,
 });
 
+// Use the singular name "user" for the collection
+//const User = mongoose.model("user", userSchema);
 
-const User = mongoose.models.users || mongoose.model("users", userSchema);
+
+try {
+    // Try to get the existing model if it exists
+    User = mongoose.model("user");
+  } catch (error) {
+    // If the model doesn't exist, create it
+    User = mongoose.model("user", userSchema);
+  }
+  
+  module.exports = User;
 
 module.exports = User;

@@ -1,6 +1,6 @@
 "use client";
 import React, { useState } from 'react';
-import taskimage from '../../assets/task.svg';
+//import taskimage from '../../assets/task.svg';
 import addTask from '@/services/taskService';
 
 function AddTask() {
@@ -33,9 +33,7 @@ function AddTask() {
   return (
     <div className='grid grid-cols-12 justify-center m-10'>
       <div className='border col-span-6 col-start-4 p-5 shadow-gray-700 shadow-lg'>
-        <div>
-          <img src={taskimage} alt="Task" />
-        </div>
+        
         <h1 className='text-5xl text-black-600 text-center font-bold'>Add your task here</h1>
         <form className='bg-black text-white justify-center px-5 py-5 m-5' 
         action="#!" 
@@ -101,5 +99,4 @@ function AddTask() {
     </div>
   );
 }
-
 export default AddTask;

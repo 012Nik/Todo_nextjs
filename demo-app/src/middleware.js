@@ -45,7 +45,7 @@ export function middleware(request) {
     }
   }
 
-  console.log(authToken);
+  //console.log(authToken);
 
   //   return NextResponse.redirect(new URL("/home", request.url));
 }
