@@ -3,8 +3,6 @@ import './globals.css'
 import Navbar from '@/components/Navbar'
 import Footer from '@/components/Footer'
 import UserProvider from '@/context/contextProvider'
-//import UserProvider from '@/context/userProvider'
-
 
 const inter = Inter({ subsets: ['latin'] })
 
@@ -15,17 +13,15 @@ export const metadata = {
 
 export default function RootLayout({ children }) {
   return (
-    <html lang="en">
-      <body className={inter.className}>
-      
-    
-    <UserProvider>
-    <Navbar />
-      <div className='h-96'>{children}</div>
-      <Footer />
-    </UserProvider>
-     
-     
+    <html lang="en" className="h-full">
+      <body className={`flex flex-col min-h-screen ${inter.className}`}>
+        <UserProvider>
+          <Navbar />
+          <div className="flex-grow container mx-auto">
+            {children}
+          </div>
+          <Footer />
+        </UserProvider>
       </body>
     </html>
   )
