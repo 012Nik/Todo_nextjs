@@ -4,9 +4,8 @@ import { NextResponse } from "next/server";
 import jwt from "jsonwebtoken";
 //get all task
 
-connectDb();
 export async function GET()
-{
+{   await connectDb()
     try {
         const task = await Task.find();
 
@@ -23,7 +22,7 @@ export async function GET()
 //create task
 
 export async function POST(request)
-{   connectDb();
+{  await connectDb()
     console.log("in post method")
    const {title,content,status,userId} = await request.json();
 

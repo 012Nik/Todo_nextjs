@@ -3,9 +3,9 @@ import User from "@/models/users";
 import { connect } from "mongoose";
 import { NextRequest, NextResponse } from "next/server";
 
-connectDb();
+
 export async function GET(request,{params})
-{
+{   await connectDb()
     const {userId} = params;
 
     try {
@@ -24,7 +24,7 @@ export async function GET(request,{params})
 
 
 export async function DELETE(request,{params})
-{
+{  await connectDb()
   const {userId} = params;
 
   try {
@@ -45,7 +45,7 @@ export async function DELETE(request,{params})
 }
 
 export async function PUT(request,{params})
-{
+{  await connectDb()
     const {userId} =params;
 
     const {name,password,about,profileURL} = await request.json()

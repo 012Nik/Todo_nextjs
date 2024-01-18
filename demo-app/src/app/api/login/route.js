@@ -5,11 +5,11 @@ import { connectDb } from "@/helper/db";
 import jwt from "jsonwebtoken";
 
 
-connectDb();
+
 export  async function POST(request){
  
     const {email,password} = await request.json();
-    
+    await connectDb()
     try {
         console.log("in post")
         //1step 1: validate c.com',

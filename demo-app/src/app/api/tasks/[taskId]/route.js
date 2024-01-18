@@ -2,7 +2,7 @@ import { Task } from "@/models/task";
 import { NextResponse } from "next/server";
 
 export async function GET(request,{params})
-{
+{   await connectDb()
         const {taskId} = params;
 
         try {
@@ -27,7 +27,7 @@ export async function GET(request,{params})
 }
 
 export async function PUT(request,{params})
-{
+{  await connectDb()
     const {taskId} = params;
     const {status} = request.json();
 
@@ -48,7 +48,7 @@ export async function PUT(request,{params})
     }
 }
 export async function DELETE(request,{params})
-{
+{   await connectDb()
     const {taskId} = params;
 
     try {

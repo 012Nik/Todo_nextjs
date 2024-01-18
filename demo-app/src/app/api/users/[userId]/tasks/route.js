@@ -8,7 +8,7 @@ import { NextResponse } from "next/server";
 
 export async function GET(request, { params }) {
   const { userId } = params;
-
+  await connectDb()
   try {
     // get user using id
 

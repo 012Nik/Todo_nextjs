@@ -3,9 +3,9 @@ import { NextResponse } from "next/server"
 import User  from "@/models/users";
 import bcrypt from "bcryptjs"
 
-connectDb()
+
 export async function GET()
-{
+{   await connectDb()
     let users =[];
     try {
         users = await User.find().select("-password");
@@ -24,7 +24,7 @@ export async function GET()
 
 export async function POST(request)
 {
-    connectDb();
+    await connectDb()
     //getting user details
      const {name,email,password,about,profileURL} = await   request.json()
 
@@ -50,10 +50,6 @@ export async function POST(request)
 }
 
 
-export function PUT()
-{
-
-}
 
 
 
