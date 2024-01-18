@@ -8,6 +8,8 @@ import Task from "./Task";
 const ShowTasks = () => {
   const [tasks, setTasks] = useState([]);
   const context = useContext(UserContext);
+
+
   async function loadTasks(userId) {
     try {
       const tasks = await getTasksOfUser(userId);
@@ -24,10 +26,19 @@ const ShowTasks = () => {
     }
   }, [context.user]);
 
+  /*
+Dependency Array [context.user]:
+The dependency array [context.user] specifies that the effect should 
+re-run whenever context.user changes. If context.user is null or changes 
+to a different user object, the effect will be triggered again. */.0
+
   async function deleteTaskParent(tasksId) {
     try {
+       // 1. Attempt to delete the task using the deleteTask function
       const result = await deleteTask(tasksId);
-      console.log(result);
+    
+      // 2. If the deletion is successful:
+      // a. Update the local state (tasks) by removing the deleted task
       const newTasks = tasks.filter((item) => item._id != tasksId);
       setTasks(newTasks);
      alert("Your task is deleted ")
