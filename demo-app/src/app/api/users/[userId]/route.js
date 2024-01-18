@@ -12,7 +12,8 @@ export async function GET(request,{params})
      const user= await User.findById(userId).select("-password");
       return NextResponse.json(user)
     } catch (error) {
-        console.log("failed to get user",error);
+        //console.log("failed to get user",error);
+        alert("Error occurred in getting user")
         return NextResponse.json({
             message:"failed to get user",
             success:false
