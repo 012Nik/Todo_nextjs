@@ -21,7 +21,7 @@ export default function RootLayout({ children }) {
     
     <UserProvider>
     <Navbar />
-      <div className=''>{children}</div>
+      <div className='h-96'>{children}</div>
       <Footer />
     </UserProvider>
      

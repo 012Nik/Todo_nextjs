@@ -1,16 +1,16 @@
 "use client";
 import React, { useState } from 'react';
 //import taskimage from '../../assets/task.svg';
-import addTask from '@/services/taskService';
+import { addTask } from '@/services/taskService';
 
-function AddTask() {
+ function AddTask() {
   const [task, setTask] = useState({
     title: "",
     content: "",
     status: "none",
-    userId: "65a0edd793828099abb06116"
+    userId: ""
   });
-
+  
   const handleAddTask = async (event) => {
     console.log("hello1")
     event.preventDefault(); 
@@ -19,7 +19,8 @@ function AddTask() {
     try {
       console.log("Task before submission:", task);
     const result = await addTask(task);
-    console.log("Task creation result:", result);
+    alert("task created ")
+    //console.log("Task creation result:", result);
       setTask({
         title: "",
     content: "",

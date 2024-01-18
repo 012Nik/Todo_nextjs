@@ -1,13 +1,10 @@
-import React from 'react'
+import React from "react";
+import ShowTasks from "./showTasks";
+export const metadata = {
+  title: "All Tasks : Work Manager",
+};
+const ShowTasksPage = () => {
+  return <ShowTasks />;
+};
 
-function page() {
-  return (
-    <div>
-        <h1 className='text-5xl'>
-            Show task
-        </h1>
-    </div>
-  )
-}
-
-export default page
+export default ShowTasksPage;

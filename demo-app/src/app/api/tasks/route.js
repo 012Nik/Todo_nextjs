@@ -1,7 +1,7 @@
 import { connectDb } from "@/helper/db";
 import { Task } from "@/models/task";
 import { NextResponse } from "next/server";
-
+import jwt from "jsonwebtoken";
 //get all task
 
 connectDb();
@@ -27,10 +27,18 @@ export async function POST(request)
     console.log("in post method")
    const {title,content,status,userId} = await request.json();
 
+   //fetching logged in user
+
+   const authToken = request.cookies.get("authToken")?.value;
+   //console.log("current toekn :"+authToken);
+   const data =   jwt.verify(authToken, process.env.JWT_KEY);
+
+   console.log("+++++++current id data:"+data._id);
+     
    try {
     console.log("in try block of post method")
         const createtask = new Task({
-            title,content,status,userId,
+            title,content,status,userId:data._id,
         })
         // const newTask = await createtask.save();   
          // Example increasing the timeout to 20 seconds
