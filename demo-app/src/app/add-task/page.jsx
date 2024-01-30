@@ -12,12 +12,10 @@ import { addTask } from '@/services/taskService';
   });
   
   const handleAddTask = async (event) => {
-    console.log("hello1")
     event.preventDefault(); 
-    console.log("hello")
-    console.log("Task before submission:", task);
+    //console.log("Task before submission:", task);
     try {
-      console.log("Task before submission:", task);
+      //console.log("Task before submission:", task);
     const result = await addTask(task);
     alert("task created ")
     //console.log("Task creation result:", result);

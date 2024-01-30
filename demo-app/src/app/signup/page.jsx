@@ -29,9 +29,17 @@ const Signup = () => {
     try {
       const result = await signUp(data);
 
-      console.log(result);
+      //console.log(result);
+      if (result.status === 201) {
+        alert("User is registered!!");
+        resetForm();
+      } else if (result.status === 400 && result.error === 'User with this email is already registered') {
+        alert(result.error);
+      } else {
+        alert("Unknown error occurred");
+      }
 
-      alert("User is registered !!")
+     // alert("User is registered !!")
 
       setData({
         name: "",

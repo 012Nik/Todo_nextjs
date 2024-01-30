@@ -1,6 +1,7 @@
 
 import { Task } from "@/models/task";
 import { NextResponse } from "next/server";
+import { connectDb } from "@/helper/db";
 
 //get all tasks of user
 // localhost:3000/api/users/[userId]/tasks

@@ -3,9 +3,10 @@ import { NextResponse } from "next/server";
 // This function can be marked `async` if using `await` inside
 export function middleware(request) {
   console.log("middleware executed");
-
+// This line retrieves the authentication token from the user's cookies.
   const authToken = request.cookies.get("authToken")?.value;
 
+//This block excludes certain paths (/api/login and /api/users) from further processing.
   if (
     request.nextUrl.pathname === "/api/login" ||
     request.nextUrl.pathname === "/api/users"
@@ -17,9 +18,10 @@ export function middleware(request) {
   const loggedInUserNotAccessPaths =
     request.nextUrl.pathname === "/login" ||
     request.nextUrl.pathname == "/signup";
-
+  // If the user is trying to access login or signup pages and is already authenticated, 
+  //they are redirected to the user profile page
   if (loggedInUserNotAccessPaths) {
-    // access not secured route
+    //if user has authtoken redirect to user profile page
     if (authToken) {
       return NextResponse.redirect(new URL("/profile/user", request.url));
     }
@@ -41,16 +43,16 @@ export function middleware(request) {
 
       return NextResponse.redirect(new URL("/login", request.url));
     } else {
-      // varify...
+      
     }
   }
 
   //console.log(authToken);
 
-  //   return NextResponse.redirect(new URL("/home", request.url));
+  // return NextResponse.redirect(new URL("/", request.url));
 }
 
-// See "Matching Paths" below to learn more
+//The matcher array defines the paths that this middleware should apply to.
 export const config = {
   matcher: [
     "/",
