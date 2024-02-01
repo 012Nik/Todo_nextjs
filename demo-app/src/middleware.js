@@ -38,7 +38,7 @@ export function middleware(request) {
           {
             status: 401,
           }
-        );
+        );``
       }
 
       return NextResponse.redirect(new URL("/login", request.url));
